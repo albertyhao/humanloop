@@ -1,0 +1,144 @@
+body {
+	overflow-x: hidden;
+	background-color: white;
+	font-family: 'Poppins', Sans-Serif;
+	font-size: 1em;
+	display:grid;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	grid-template-areas: "h"
+						 "m"
+						 "f"
+						 ;
+
+	grid-template-rows: 100px auto 50px;
+	/*grid-template-columns: auto 1px;*/
+	/*transition: grid-template-columns 1s;*/
+}
+
+header {
+	padding: 20px;
+	background-color: #00B2EE;
+	color: #ffffff;
+	grid-area: h;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+nav {
+	font-size: 30px;
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+nav > div {
+	cursor: pointer;
+}
+
+footer {
+	padding: 10px;
+	background-color: gray;
+	color: #ffffff;
+	grid-area: f;
+}
+
+table, th, td {
+	border: 3px solid #00B2EE;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+}
+
+.editRule, .removeRule {
+	border: none;
+	color: #00B2EE;
+	cursor: pointer;
+}
+
+.container {
+	grid-area: m;
+	display:grid;
+	grid-template-areas: "b t"
+						 ;
+
+	/*grid-template-rows: 100px auto 50px;*/
+	grid-template-columns: auto;
+}
+
+.btn {
+	border-radius: 8px;
+    border: 2px solid #00B2EE;
+    transition-duration: 0.4s;
+    font-family: 'Poppins', Sans-Serif;
+    padding: 3px 8px;
+    cursor: pointer;
+    height: 3vh;
+    width: 15vw;
+    text-align: center;
+    font-size: 1.5vh;
+    margin: 15px;
+    overflow: hidden
+}
+
+.btnSmall {
+	border-radius: 8px;
+    border: 2px solid #00B2EE;
+    transition-duration: 0.4s;
+    font-family: 'Poppins', Sans-Serif;
+    padding: 3px 8px;
+    cursor: pointer;
+    height: 3vh;
+    width: 5vw;
+    text-align: center;
+    font-size: 75%;
+    margin: 10px;
+    overflow: hidden
+
+}
+
+#ruleButtons {
+	grid-area: b;
+}
+
+#ruleMods {
+	grid-area: t;
+}
+
+#ruleTable {
+	margin: 15px;
+}
+
+#ruleType, #inputPython {
+	display: none;
+	margin-left: 5vw;
+	width: 50vw;
+	padding: 10px 10px;
+	border: 2px solid #00B2EE;
+	border-radius: 8px;
+}
+
+#inputPython {
+	display: none;
+}
+
+#output {
+	width: 95%;
+	height: 15vh;
+	margin: 15px;
+}
+
+/*ACE editor*/
+
+/*#editor { */
+
+/*    top: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*}*/
