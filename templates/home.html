@@ -1553,7 +1553,8 @@
 
 		    function post(data, callback) {
 		        var req = new XMLHttpRequest();
-		        req.open("POST", "/save?file=" + "humanloop/rules/" + document.querySelector("#ruleName").value + ".py", true); // make sure value of input exists
+						//req.open("POST", "/save?file=" + "humanloop/rules/" + document.querySelector("#ruleName").value + ".py", true); // make sure value of input exists
+						req.open("POST", "/save?file="+document.querySelector("#ruleName").value + ".py", true); // make sure value of input exists
 		        req.setRequestHeader("content-type", "application/json");
 		        req.onreadystatechange = function() {
 		            if (req.readyState == 4) {

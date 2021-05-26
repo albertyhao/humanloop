@@ -6,8 +6,9 @@ app = Flask(__name__)
 def index():
     return render_template('home.html')
 
+app.config[‘UPLOAD_FOLDER‘]	= '/rules'
 @app.route('/save', methods=["POST"])
 def save():
-    print(request.get_json())
-    print(request.query_string.decode()) #parse
+    print("json", request.get_json())
+    print("querystring", request.query_string.decode()) #parse
     return jsonify(success=True), 200
