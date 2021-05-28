@@ -1,4 +1,5 @@
 import subprocess
+from subprocess import Popen, PIPE
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -19,5 +20,18 @@ def save():
     file.close()
     return jsonify(success=True), 200
 
-@app.route('/python', methods=["POST"])
-def python():
+@app.route('/test', methods=["POST"])
+def test():
+
+    userCode = request.get_json()['code']
+    print(userCode)
+    file = open('tmp.py', 'w')
+    print("1")
+    file.write(userCode)
+    file.close()
+
+    with Popen('pylint api.py', stdout=PIPE, universal_newlines=True, shell=True) as output:
+        print("inside")
+        print(output.stdout.read())
+
+    print("3")

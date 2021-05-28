@@ -50,17 +50,19 @@ savePythonCode.addEventListener("click", () => {
 // grab user code from qoom editor
 
 async function grabPython(){
+
 	const output = document.querySelector('#output');
 	var c = editor.getValue();
 
 	var data = {code: c};
-	var res = await fetch('/humanloop/python', {
+	var res = await fetch('/test', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)
 	})
+	console.log(res.json)
 
 	var text = await res.text();
 	output.value = text;
