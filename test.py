@@ -1,4 +1,2 @@
-import spacy
-import matplotlib
-
-print(dir(spacy))
+code
+code
