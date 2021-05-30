@@ -1,8 +1,11 @@
 import subprocess
+import sys
 from subprocess import Popen, PIPE
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
+
+print(subprocess.run(['pylint', 'api.py'], text=True).stdout)
 
 @app.route('/')
 def index():
@@ -22,16 +25,22 @@ def save():
 
 @app.route('/test', methods=["POST"])
 def test():
+    try:
+        userCode = request.get_json()['code']
+        print(userCode)
+        file = open('tmp.py', 'w')
+        print("1")
+        file.write(userCode)
 
-    userCode = request.get_json()['code']
-    print(userCode)
-    file = open('tmp.py', 'w')
-    print("1")
-    file.write(userCode)
-    file.close()
+        output = subprocess.run(['cat', '/Users/alberthao/desktop/github/humanloop/tmp.py'], check=True, text=True, capture_output=True)
+        print(output)
+        file.close()
+        return "OK"
+    except Exception as ex:
+        print(2)
+        print(ex)
+        return ex
 
-    with Popen('pylint api.py', stdout=PIPE, universal_newlines=True, shell=True) as output:
-        print("inside")
-        print(output.stdout.read())
-
-    print("3")
+    # with Popen(['pylint', ' api.py'], stdout=PIPE, universal_newlines=True, shell=True) as output:
+    #     print("inside")
+    #     print(output.stdout.read())
