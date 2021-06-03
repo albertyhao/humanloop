@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-print(subprocess.run(['pylint', 'api.py'], text=True).stdout)
+# print(subprocess.run(['pylint', 'api.py'], text=True).stdout)
 
 @app.route('/')
 def index():
@@ -31,15 +31,15 @@ def test():
         file = open('tmp.py', 'w')
         print("1")
         file.write(userCode)
-
-        output = subprocess.run(['cat', '/Users/alberthao/desktop/github/humanloop/tmp.py'], check=True, text=True, capture_output=True)
-        print(output)
         file.close()
+
+        output = subprocess.run(['pylint', '/home/podo/albert/humanloop/tmp.py'], text=True, capture_output=True)
+        print(output)
         return "OK"
     except Exception as ex:
         print(2)
         print(ex)
-        return ex
+        return 'NOT GOOD'
 
     # with Popen(['pylint', ' api.py'], stdout=PIPE, universal_newlines=True, shell=True) as output:
     #     print("inside")
